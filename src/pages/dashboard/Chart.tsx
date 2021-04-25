@@ -63,7 +63,7 @@ interface ChartProps {
 
 export default function Chart({ children }: ChartProps) {
   return (
-    <Box p="8" bg="gray.800" borderRadius={8} pb="4">
+    <Box p={["6", "8"]} bg="gray.800" borderRadius={8} pb="4">
       <Text>{children}</Text>
 
       <ChartApex options={options}  series={series} type="area" height={160} />
