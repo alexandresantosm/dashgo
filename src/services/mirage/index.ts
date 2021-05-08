@@ -11,5 +11,12 @@ export function makeServer() {
     models: {
       user: Model.extend<Partial<User>>({}),
     },
+
+    routes() {
+      this.get('/users');
+      this.post('/users');
+    },
   });
+
+  return server;
 }
