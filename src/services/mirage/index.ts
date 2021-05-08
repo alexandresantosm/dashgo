@@ -13,8 +13,12 @@ export function makeServer() {
     },
 
     routes() {
+      this.namespace = 'api';
+
       this.get('/users');
       this.post('/users');
+
+      this.namespace = '';
     },
   });
 
