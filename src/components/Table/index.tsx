@@ -35,12 +35,14 @@ export default function Table({ data }: TableProps) {
         </Tr>
       </Thead>
       <Tbody>
-        <Tr>
-          <Td px={["4", "4", "6"]}>
-            <Checkbox colorScheme="pink" />
-          </Td>
-          <Td>
-            <Box>
+        { data.map(user => {
+          return (
+            <Tr key={user.id}>
+              <Td px={["4", "4", "6"]}>
+                <Checkbox colorScheme="pink" />
+              </Td>
+              <Td>
+                <Box>
               <Text fontWeight="bold">Alexandre Santos</Text>
               <Text fontSize="sm" color="gray.300">menezesalexandre@rocketmail.com</Text>
             </Box>
