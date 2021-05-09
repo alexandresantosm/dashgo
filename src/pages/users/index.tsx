@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Box, Button, Flex, Icon } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, Spinner, Text } from '@chakra-ui/react';
 import { RiAddLine } from 'react-icons/ri';
 
 import Header from '../../components/Header';
