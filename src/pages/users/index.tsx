@@ -7,7 +7,7 @@ import Heading from '../../components/Heading';
 import Pagination from '../../components/Pagination';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
-import { api } from '../../services/api';
+import { useUsers } from '../../services/hooks/useUsers';
 
 type User = {
   id: string;
