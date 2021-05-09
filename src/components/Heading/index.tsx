@@ -1,7 +1,8 @@
+import { ReactNode } from 'react';
 import { Heading as ChakraHeading } from '@chakra-ui/react';
 
 interface HeadingProps {
-  children: string;
+  children: ReactNode;
 }
 
 export default function Heading({ children }: HeadingProps) {
