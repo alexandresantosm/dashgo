@@ -8,7 +8,13 @@ import Heading from '../../components/Heading';
 import Pagination from '../../components/Pagination';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
-import { useEffect } from 'react';
+
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: Date;
+}
 
 export default function UserList() {
   useEffect(() => {
