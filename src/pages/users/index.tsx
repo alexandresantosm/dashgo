@@ -9,13 +9,6 @@ import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
 import { useUsers } from '../../services/hooks/useUsers';
 
-type User = {
-  id: string;
-  name: string;
-  email: string;
-  createdAt: Date;
-}
-
 export default function UserList() {
   const { data, isLoading, isFetching, error } = useUsers();
 
