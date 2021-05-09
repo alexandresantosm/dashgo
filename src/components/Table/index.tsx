@@ -1,7 +1,18 @@
 import { Box, Button, Checkbox, Icon, Table as ChakraTable, Tbody, Td, Text, Th, Thead, Tr, useBreakpointValue } from '@chakra-ui/react';
 import { RiPencilLine } from 'react-icons/ri';
 
-export default function Table() {
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: Date;
+}
+
+interface TableProps {
+  data: User[];
+}
+
+export default function Table({ data }: TableProps) {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
