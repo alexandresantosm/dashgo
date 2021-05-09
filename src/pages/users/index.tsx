@@ -60,7 +60,17 @@ export default function UserList() {
             </Link>
           </Flex>
 
-          <Table />
+          { isLoading ? (
+            <Flex justify="center">
+              <Spinner />
+            </Flex>
+          ) : error ? (
+            <Flex justify="center">
+              <Text>Falha ao obter dados dos usuários.</Text>
+            </Flex>
+          ) : (
+            <Table data={data} />
+          )}
 
           <Pagination />
         </Box>
