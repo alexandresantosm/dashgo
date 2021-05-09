@@ -43,77 +43,27 @@ export default function Table({ data }: TableProps) {
               </Td>
               <Td>
                 <Box>
-              <Text fontWeight="bold">Alexandre Santos</Text>
-              <Text fontSize="sm" color="gray.300">menezesalexandre@rocketmail.com</Text>
-            </Box>
-          </Td>
-          { isWideVersion && <Td>24 de Abril, 2021</Td> }
-          {isWideVersion && (
-            <Td>
-              <Button
-                as="a"
-                size="sm"
-                fontSize="sm"
-                colorScheme="purple"
-                leftIcon={<Icon as={RiPencilLine} size="16" />}
-              >
-                Editar
-              </Button>
-            </Td>
-          )}
-        </Tr>
-        
-        <Tr>
-          <Td px={["4", "4", "6"]}>
-            <Checkbox colorScheme="pink" />
-          </Td>
-          <Td>
-            <Box>
-              <Text fontWeight="bold">Alexandre Santos</Text>
-              <Text fontSize="sm" color="gray.300">menezesalexandre@rocketmail.com</Text>
-            </Box>
-          </Td>
-          { isWideVersion && <Td>24 de Abril, 2021</Td> }
-          {isWideVersion && (
-            <Td>
-              <Button
-                as="a"
-                size="sm"
-                fontSize="sm"
-                colorScheme="purple"
-                leftIcon={<Icon as={RiPencilLine} size="16" />}
-              >
-                Editar
-              </Button>
-            </Td>
-          )}
-        </Tr>
-
-        <Tr>
-          <Td px={["4", "4", "6"]}>
-            <Checkbox colorScheme="pink" />
-          </Td>
-          <Td>
-            <Box>
-              <Text fontWeight="bold">Alexandre Santos</Text>
-              <Text fontSize="sm" color="gray.300">menezesalexandre@rocketmail.com</Text>
-            </Box>
-          </Td>
-          { isWideVersion && <Td>24 de Abril, 2021</Td> }
-          {isWideVersion && (
-            <Td>
-              <Button
-                as="a"
-                size="sm"
-                fontSize="sm"
-                colorScheme="purple"
-                leftIcon={<Icon as={RiPencilLine} size="16" />}
-              >
-                Editar
-              </Button>
-            </Td>
-          )}
-        </Tr>
+                  <Text fontWeight="bold">{user.name}</Text>
+                  <Text fontSize="sm" color="gray.300">{user.email}</Text>
+                </Box>
+              </Td>
+              { isWideVersion && <Td>{user.createdAt}</Td> }
+              {isWideVersion && (
+                <Td>
+                  <Button
+                    as="a"
+                    size="sm"
+                    fontSize="sm"
+                    colorScheme="purple"
+                    leftIcon={<Icon as={RiPencilLine} size="16" />}
+                  >
+                    Editar
+                  </Button>
+                </Td>
+              )}
+            </Tr>
+          )
+        })}     
       </Tbody>
     </ChakraTable>
   );
