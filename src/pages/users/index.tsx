@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Box, Button, Flex, Icon, Spinner, Text } from '@chakra-ui/react';
 import { RiAddLine } from 'react-icons/ri';
+import { useQuery } from 'react-query';
 
 import Header from '../../components/Header';
 import Heading from '../../components/Heading';
