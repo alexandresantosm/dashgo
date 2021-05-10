@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import { Box, Button, Flex, Icon, Spinner, Text } from '@chakra-ui/react';
 import { RiAddLine } from 'react-icons/ri';
@@ -10,7 +11,8 @@ import Table from '../../components/Table';
 import { useUsers } from '../../services/hooks/useUsers';
 
 export default function UserList() {
-  const { data, isLoading, isFetching, error } = useUsers();
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data, isLoading, isFetching, error } = useUsers(currentPage);
 
   return (
     <Box>
@@ -48,14 +50,15 @@ export default function UserList() {
               <Text>Falha ao obter dados dos usuários.</Text>
             </Flex>
           ) : (
-            <Table data={data} />
+            <Table data={data.users} />
           )}
-
-          <Pagination
-            totalCountOfRegisters={200}
-            currentPage={5}
-            onPageChange={() => {}}
-          />
+          { !isLoading && (
+            <Pagination
+              totalCountOfRegisters={data.totalCount}
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+            />
+          )}
         </Box>
       </Flex>
     </Box>
