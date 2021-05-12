@@ -1,5 +1,8 @@
-import { Box, Button, Checkbox, Icon, Table as ChakraTable, Tbody, Td, Text, Th, Thead, Tr, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Button, Checkbox, Icon, Table as ChakraTable, Tbody, Td, Text, Th, Thead, Tr, useBreakpointValue, Link } from '@chakra-ui/react';
 import { RiPencilLine } from 'react-icons/ri';
+
+import { api } from '../../services/api';
+import { queryClient } from '../../services/queryClient';
 
 type User = {
   id: string;
@@ -17,6 +20,16 @@ export default function Table({ data }: TableProps) {
     base: false,
     lg: true,
   });
+
+  async function handlePrefetchUser(userId: string) {
+    await queryClient.prefetchQuery(['user', userId], async () => {
+      const response = await api.get(`users/${userId}`);
+
+      return response.data;
+    }, {
+      staleTime: 1000 * 60 * 10 // 10 minutes
+    });
+  }
 
   return (
     <ChakraTable colorScheme="whiteAlpha">
@@ -43,7 +56,9 @@ export default function Table({ data }: TableProps) {
               </Td>
               <Td>
                 <Box>
-                  <Text fontWeight="bold">{user.name}</Text>
+                  <Link color="purple.400" onMouseEnter={() => handlePrefetchUser(user.id)}>
+                    <Text fontWeight="bold">{user.name}</Text>
+                  </Link>
                   <Text fontSize="sm" color="gray.300">{user.email}</Text>
                 </Box>
               </Td>
