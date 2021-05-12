@@ -8,11 +8,25 @@ import Heading from '../../components/Heading';
 import Pagination from '../../components/Pagination';
 import Sidebar from '../../components/Sidebar';
 import Table from '../../components/Table';
-import { useUsers } from '../../services/hooks/useUsers';
+import { getUsers, useUsers } from '../../services/hooks/useUsers';
+import { GetServerSideProps } from 'next';
 
-export default function UserList() {
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: Date;
+}
+
+type UserListProps = {
+  users: User[];
+}
+
+export default function UserList({ users }: UserListProps) {
   const [currentPage, setCurrentPage] = useState(1);
-  const { data, isLoading, isFetching, error } = useUsers(currentPage);
+  const { data, isLoading, isFetching, error } = useUsers(currentPage, {
+    initialData: users,
+  });
 
   return (
     <Box>
@@ -63,4 +77,14 @@ export default function UserList() {
       </Flex>
     </Box>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { users } = await getUsers(1);
+
+  return {
+    props: {
+      users,
+    }
+  }
 }
